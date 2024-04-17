@@ -1,0 +1,71 @@
+{
+  "name": "nextjs_electronjs",
+  "version": "1.0.0",
+  "description": "nextjs_electronjs",
+  "author": "Ayris.Dev <ayris.dev@gmail.com>",
+  "main": "main/boot.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:next\" \"electron ./main/boot.js\"",
+    "dev:next": "cd client && next dev",
+    "build": "npm run build:next && npm run build:electron",
+    "build:next": "cd client && next build",
+    "build:electron": "electron-builder"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "type": "module",
+  "build": {
+    "appId": "com.example.yourapp",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets",
+      "app": "."
+    },
+    "files": [
+      "**/*",
+      "!**/*.map",
+      "!.git/**/*",
+      "!*.md",
+      "!*.lock",
+      "!.editorconfig",
+      "!.gitignore",
+      "!.npmignore",
+      "!package-lock.json",
+      "!yarn.lock",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{o,hprof,orig,pyc,pyo,rbc}",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,__pycache__,thumbs.db,.gitignore,.gitmodules,.bzr,.idea,.vs,.framer,.editorconfig,.hgignore,.npmignore,.jshintrc,.flowconfig,.yarn-metadata.json,.travis.yml,circle.yml}",
+      "main/**/*",
+      "client/out/**/*"
+    ],
+    "asar": false,
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    }
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.1"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.13.3",
+    "concurrently": "^8.2.2",
+    "electron": "^30.0.0",
+    "electron-is-dev": "^3.0.1",
+    "wait-on": "^7.2.0",
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.1"
+  }
+}
